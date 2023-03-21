@@ -1,0 +1,49 @@
+.header {
+    max-width: 100vw;
+    height: 165px;
+    // background: gray;
+    background-image: url("https://phonoteka.org/uploads/posts/2021-05/1620702187_9-phonoteka_org-p-fon-dlya-zum-knigi-11.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.main {
+    display: flex;
+    width: 500px;
+    height: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+
+    h1 {
+        color: white;
+        font-size: 30px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    p {
+        color: white;
+    }
+
+}
+
+.search {
+    width: 100%;
+    height: 30px;
+    margin: 10px;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.section1 {
+    display: flex;
+}
+
+.section2 {
+    display: flex;
+}

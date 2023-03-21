@@ -1,0 +1,39 @@
+
+.bookCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    background-color: #f5f5f5; /* светло-серый цвет фона */
+     color: #fff; /* белый цвет для текста */
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* добавим тень для эффекта объемности */
+     border-radius: 5px; /* скруглим углы блока */
+     transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+   }
+ 
+   .bookCard:hover {
+     box-shadow: 0px 14px 30px rgba(0, 0, 0, 0.5);
+     transform: translateY(-10px)
+   }
+ 
+   .bookCover {
+     width: 150px;
+     height: 200px;
+     background-size: cover;
+     background-position: center;
+     margin-bottom: 10px;
+ }
+ 
+ 
+   .bookTitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: black;
+   }
+   .bookAuthor {
+    font-size: 16px;
+    color: #666;
+   }

@@ -1,0 +1,14 @@
+/* Reset and base styles  */
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+.main {
+	min-height: 100vh;
+	display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+	padding: 15px;
+	background: white;
+}
