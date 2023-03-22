@@ -1,16 +1,18 @@
 import Header from "./components/Header/Header";
 import Main from "./pages/Main";
-import Preloader from "./components/preloader/Preloader";
+import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import "../src/index.scss";
+// import Detail from "./pages/detail/Detail";
 
 function App() {
   const [books, setBooks] = useState([]);
-  const [pageBook, setPageBook] = useState(12);
+  const [bookId, setBookId] = useState({});
   const [bookName, setBookName] = useState("");
   const [sort, setSort] = useState("relevance");
   const [loading, setLoading] = useState(false);
+
   const URL = "AIzaSyBunYTFXCRD5SFZKVRNZvq883PudUc7C1c";
 
   const handleInput = (e) => {
@@ -23,18 +25,32 @@ function App() {
     searchBook(bookName, value);
   }
 
-  async function searchBook(bookName, sort, pageBook) {
+  const searchBook = async (bookName, sort) => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${bookName}&orderBy=${sort}&maxResults=${pageBook}&key=${URL}`
+      const {
+        data: { items },
+      } = await axios.get(
+        `https://www.googleapis.com/books/v1/volumes?q=${bookName}&orderBy=${sort}&key=${URL}`
       );
-      setBooks(response.data.items);
+      setBooks(items);
       setLoading(false);
     } catch (error) {
       console.error("Произошла ошибка", error);
     }
-  }
+  };
+
+  const detailBook = async (id) => {
+    try {
+      setLoading(true);
+      const {
+        data: { volumeInfo },
+      } = await axios.get(`https://www.googleapis.com/books/v1/volumes/${id}`);
+      setBookId(volumeInfo);
+    } catch (error) {
+      console.error("Произошла ошибка", error);
+    }
+  };
 
   return (
     <>
@@ -45,8 +61,17 @@ function App() {
         searchBook={searchBook}
         sort={sort}
       />
+
       <div className="main">
-        {loading ? <Preloader /> : <Main books={books} />}
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Main loading={loading} books={books} detailBook={detailBook} />
+            }
+          ></Route>
+        </Routes>
       </div>
     </>
   );

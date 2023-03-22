@@ -1,20 +1,21 @@
-import React from "react";
+import { Book } from "../components/Book";
 
-import Book from "../components/Book/Book";
+import Preloader from "../components/preloader/Preloader";
 
 const Main = (props) => {
-  const { books = [] } = props;
+  const { books = [], loading, detailBook } = props;
 
   return (
     <>
-      <div className="markup">
-        {books.map((book) => {
-          return <Book key={book.id} book={book} />;
-        })}
-      </div>
-      <div className="container-btn">
-        <button className="load">Load more</button>
-      </div>
+      {loading ? (
+        <Preloader />
+      ) : (
+        <div className="markup">
+          {books.map((book) => {
+            return <Book key={book.id} book={book} detailBook={detailBook} />;
+          })}
+        </div>
+      )}
     </>
   );
 };
