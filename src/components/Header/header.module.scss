@@ -1,49 +1,79 @@
+
+
+
 .header {
-    max-width: 100vw;
-    height: 165px;
-    // background: gray;
-    background-image: url("https://phonoteka.org/uploads/posts/2021-05/1620702187_9-phonoteka_org-p-fon-dlya-zum-knigi-11.jpg");
-    background-size: cover;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-.main {
-    display: flex;
-    width: 500px;
-    height: 100%;
-    margin: 0 auto;
-    flex-direction: column;
-
-    h1 {
-        color: white;
-        font-size: 30px;
-        text-align: center;
-        padding: 10px;
-    }
-
-    p {
-        color: white;
-    }
-
-}
-
-.search {
-    width: 100%;
-    height: 30px;
-    margin: 10px;
-}
-
-.section {
-    display: flex;
-    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-}
-
-.section1 {
+    text-align: center;
+   }
+ 
+   .header h1 {
+    margin: 0;
+    font-size: 36px;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px #fff;
+   }
+ 
+   .search {
     display: flex;
-}
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+   }
+ 
+    .text {
+        padding: 10px;
+        border-radius: 20px;
+        border: none;
+        width: 500px;
+        font-size: 18px;
+        color: #333;
+        outline: none;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-.section2 {
+    .submit {
+    padding: 10px 20px;
+    background-color: #007bff;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    margin-left: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: background-color 0.3s ease-in-out;
+
+    &:hover {
+        background-color: #112e7d;
+      }
+        
+    }
+
+   .options {
     display: flex;
-}
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+   }
+ 
+   .options select {
+    width: 130;
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    color: #333;
+    outline: none;
+    margin-right: 10px;
+   }
+ 
+   .options label {
+    font-size: 20px;
+    color: #333;
+   }
+ 

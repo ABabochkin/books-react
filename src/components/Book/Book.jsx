@@ -2,16 +2,19 @@ import React from "react";
 import styles from "../Book/book.module.scss";
 
 const Book = (props) => {
-  const { book = [] } = props;
+  const { book } = props;
   return (
     <div className={styles.bookCard}>
       <img
         className={styles.bookCover}
-        src="https://gl-img.rg.ru/uploads/images/2016/04/19/a2ed2b7995ca64c.jpg"
+        src={
+          book.volumeInfo.imageLinks &&
+          book.volumeInfo.imageLinks.smallThumbnail
+        }
         alt="book"
       />
-      <div className={styles.bookTitle}>Название книги</div>
-      <div className={styles.bookAuthor}>Автор книги</div>
+      <div className={styles.bookTitle}> {book.volumeInfo.title} </div>
+      <div className={styles.bookAuthor}>{book.volumeInfo.authors}</div>
     </div>
   );
 };

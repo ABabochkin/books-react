@@ -11,6 +11,7 @@
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* добавим тень для эффекта объемности */
      border-radius: 5px; /* скруглим углы блока */
      transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+     cursor: pointer;
    }
  
    .bookCard:hover {
@@ -28,7 +29,7 @@
  
  
    .bookTitle {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
     color: black;

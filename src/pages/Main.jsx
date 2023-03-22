@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 
 import Book from "../components/Book/Book";
 
-const Main = () => {
-  const [books, setBooks] = useState([]);
-  const URL = "AIzaSyBunYTFXCRD5SFZKVRNZvq883PudUc7C1c";
-
-  useEffect(() => {
-    axios
-      .get(`https://www.googleapis.com/books/v1/volumes?q=java&key=${URL}`)
-      .then((res) => setBooks(res.data.items))
-      .then((err) => console.log(err));
-  }, []);
+const Main = (props) => {
+  const { books = [] } = props;
 
   return (
-    <div className="main">
-      {books.map((book) => {
-        return <Book key={book.id} book={book} />;
-      })}
-    </div>
+    <>
+      <div className="markup">
+        {books.map((book) => {
+          return <Book key={book.id} book={book} />;
+        })}
+      </div>
+      <div className="container-btn">
+        <button className="load">Load more</button>
+      </div>
+    </>
   );
 };
 

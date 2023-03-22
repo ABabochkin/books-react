@@ -1,22 +1,47 @@
-import React from "react";
 import styles from "../Header/header.module.scss";
 
-const Header = () => {
+const Header = (props) => {
+  const { bookName, handleInput, handleSelectChange, searchBook, sort } = props;
   return (
-    <div className={styles.header}>
-      <div className={styles.main}>
+    <div>
+      <header className={styles.header}>
         <h1>Search for books</h1>
-        <input className={styles.search} type="text" />
-        <div className={styles.section}>
-          <div className={styles.section1}>
-            <p>categories</p>
-            <input />
-          </div>
-          <div className={styles.section2}>
-            <p>sorting by</p>
-            <input />
-          </div>
-        </div>
+      </header>
+
+      <div className={styles.search}>
+        <input
+          className={styles.text}
+          value={bookName}
+          placeholder="Enter book title or author"
+          onChange={handleInput}
+        />
+        <button
+          className={styles.submit}
+          onClick={() => {
+            searchBook(bookName, sort);
+          }}
+        >
+          Search
+        </button>
+      </div>
+
+      <div className={styles.options}>
+        <label htmlFor="language">Category:</label>
+        <select id="Category">
+          <option value="all">All</option>
+          <option value="art">Art</option>
+          <option value="biography">Biography</option>
+          <option value="computers">Computers</option>
+          <option value="history">History</option>
+          <option value="medical">Medical</option>
+          <option value="poetry">Poetry</option>
+        </select>
+
+        <label htmlFor="sort">Sort by:</label>
+        <select id="sort" value={sort} onChange={handleSelectChange}>
+          <option value="relevance">Relevance</option>
+          <option value="newest">Newest</option>
+        </select>
       </div>
     </div>
   );
