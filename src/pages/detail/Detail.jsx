@@ -1,25 +1,33 @@
 import React from "react";
 import styles from "../detail/detail.module.scss";
 
+import Preloader from "../../components/preloader/Preloader";
+
 const Detail = (props) => {
-  const { bookId } = props;
+  const { bookId = {}, loading } = props;
 
   return (
-    <div className={styles.main}>
-      <div className={styles.upper}>
-        <img
-          className={styles.image}
-          src={bookId.imageLinks && bookId.imageLinks.thumbnail}
-          alt="poster"
-        />
-        <div className={styles.category}>
-          <h1>{bookId.title}</h1>
-          <p>Авторы</p>
-          <p>Категория</p>
+    <>
+      {loading ? (
+        <Preloader />
+      ) : (
+        <div className={styles.main}>
+          <div className={styles.upper}>
+            <img
+              className={styles.image}
+              src={bookId.imageLinks && bookId.imageLinks.thumbnail}
+              alt="poster"
+            />
+            <div className={styles.category}>
+              <h1>{bookId.title}</h1>
+              <p>{bookId.authors}</p>
+              <p>{bookId.categories}</p>
+            </div>
+          </div>
+          <div className={styles.description}>{bookId.description}</div>
         </div>
-      </div>
-      <div className={styles.description}>Описание</div>
-    </div>
+      )}
+    </>
   );
 };
 

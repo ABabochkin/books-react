@@ -1,12 +1,47 @@
 import styles from "../Header/header.module.scss";
+import { useState } from "react";
+import axios from "axios";
+
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  const { bookName, handleInput, handleSelectChange, searchBook, sort } = props;
+  const { setBooks, setLoading, URL, topBooks } = props;
+
+  const [bookName, setBookName] = useState("");
+  const [sort, setSort] = useState("relevance");
+
+  const handleInput = (e) => {
+    setBookName(e.target.value);
+  };
+
+  function handleSelectChange(e) {
+    const value = e.target.value;
+    setSort(value);
+    searchBook(bookName, value);
+  }
+
+  const searchBook = async (bookName, sort) => {
+    if (bookName) {
+      try {
+        setLoading(true);
+        let response = await axios.get(
+          `https://www.googleapis.com/books/v1/volumes?q=${bookName}&orderBy=${sort}&key=${URL}`
+        );
+        setBooks(response.data.items);
+        setLoading(false);
+      } catch (error) {
+        console.error("Произошла ошибка", error);
+      }
+    }
+  };
+
   return (
     <div>
-      <header className={styles.header}>
-        <h1>Search for books</h1>
-      </header>
+      <Link to="/">
+        <header className={styles.header}>
+          <h1 onClick={topBooks}>Search for books</h1>
+        </header>
+      </Link>
 
       <div className={styles.search}>
         <input
@@ -39,7 +74,9 @@ const Header = (props) => {
 
         <label htmlFor="sort">Sort by:</label>
         <select id="sort" value={sort} onChange={handleSelectChange}>
-          <option value="relevance">Relevance</option>
+          <option value="relevance" onClick={searchBook}>
+            Relevance
+          </option>
           <option value="newest">Newest</option>
         </select>
       </div>
