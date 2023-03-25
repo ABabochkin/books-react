@@ -3,7 +3,7 @@ import Book from "../components/Book/Book";
 import Preloader from "../components/preloader/Preloader";
 
 const Main = (props) => {
-  const { books = [], loading, URL, setBookiId, setLoading } = props;
+  const { books = [], loading, setBookiId, setLoading } = props;
 
   return (
     <>
@@ -23,7 +23,6 @@ const Main = (props) => {
                   <Book
                     key={book.id}
                     book={book}
-                    URL={URL}
                     setBookiId={setBookiId}
                     setLoading={setLoading}
                     thumbnail={thumbnail}

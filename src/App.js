@@ -12,10 +12,10 @@ function App() {
   const [bookId, setBookiId] = useState({});
   const [loading, setLoading] = useState(false);
 
-  const URL = "AIzaSyBunYTFXCRD5SFZKVRNZvq883PudUc7C1c";
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   const topBooks = () => {
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=''&key=${URL}`)
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=''&key=${apiKey}`)
       .then((res) => res.json())
       .then((data) => setBooks(data.items));
   };
@@ -27,12 +27,7 @@ function App() {
 
   return (
     <>
-      <Header
-        setBooks={setBooks}
-        setLoading={setLoading}
-        URL={URL}
-        topBooks={topBooks}
-      />
+      <Header setBooks={setBooks} setLoading={setLoading} topBooks={topBooks} />
       <Routes>
         <Route
           exact
@@ -43,7 +38,6 @@ function App() {
               setBooks={setBooks}
               loading={loading}
               setLoading={setLoading}
-              URL={URL}
               setBookiId={setBookiId}
             />
           }

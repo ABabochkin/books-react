@@ -5,7 +5,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Header = (props) => {
-  const { setBooks, setLoading, URL, topBooks } = props;
+  const { setBooks, setLoading, topBooks } = props;
+
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   const [bookName, setBookName] = useState("");
   const [sort, setSort] = useState("relevance");
@@ -25,7 +27,7 @@ const Header = (props) => {
       try {
         setLoading(true);
         let response = await axios.get(
-          `https://www.googleapis.com/books/v1/volumes?q=${bookName}&orderBy=${sort}&key=${URL}`
+          `https://www.googleapis.com/books/v1/volumes?q=${bookName}&orderBy=${sort}&key=${apiKey}`
         );
         setBooks(response.data.items);
         setLoading(false);
